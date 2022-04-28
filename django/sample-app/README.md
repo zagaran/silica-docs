@@ -5,9 +5,7 @@ Sample Silica-Django app.
 
 This sample project demonstrates how to use Silica-Django Forms. It is not actually the completely minimal possible 
 setup, because it also demonstrates -- and provides a framework for -- how to build custom renderers that you can use 
-alongside the default Silica-Vue components. If you will not be using custom renderers in your implementation of your app,
-you may delete the `/vue` directory and its contents. If you do this, you should also delete all references to `sample-lib.umd.js`
-and delete the library from `/static/lib/js` as well.
+alongside the default Silica-Vue components.
 
 Silica-Vue does require that the Vue Composition API is imported into the browser in addition to Vue 2.
 
@@ -18,10 +16,33 @@ Silica-Vue does require that the Vue Composition API is imported into the browse
 2. Run `python manage.py runserver`
 
 ### Vue
-1. Navigate to `/vue`
-2. Run `npm install`
-3. Run `npx vite dev` to see the sample Vue app
-4. Run `npx vite build` to build the library. Note that you will have to manually copy the generated file from `/vue/dist` to `/static/lib/js`.
+
+#### Local Development
+
+When you first install the sample project you will need to also install and run the Vue app at least once. Because the code is built 
+on the server so that users will always have the most up-to-date version of the frontend code, we follow a similar 
+paradigm locally -- namely that the frontend code is sourced from a local server and not from a pre-compiled library.
+This may change in the future, but for now you should assume that running the Django server and a Node server simultaneously
+is how you should develop locally.
+
+1. run `yarn install`
+2. run `yarn dev` (if you are actively developing)
+3. run `yarn build` (if you want to build it statically for Django)
+
+If you have a node server running the Vue app, you should see changes to your components reflected immediately after
+reloading the page.
+
+### Implementation Details
+The library we build defines a number of components as well as a method `install` which globally registers Vue 
+components, mixins, and directives when it is loaded. Unlike the spiritual companion project `django-react-components`,
+we do not individually import and configure components. Rather, the Node server will dynamically rebuild the library
+of components we are building, so that any change you make will automatically be loaded into `/static/vue/dist/js/app.js`.
+Thus, when you refresh the page, you will get the latest version of the Vue library loaded onto the page. If the Vue library
+becomes large enough that loading it in bulk becomes problematic, we should investigate breaking it into chunks; for now,
+the library is small enough that we can safely load it on each page.
+
+Note that this file may grow in size over time, as hot-reloading sometimes leaves behind files and other artifacts.
+If the folder starts to fill up, simply delete it and re-run either `yarn dev` or `yarn build`.
 
 ## Custom Renderers
 
@@ -30,10 +51,8 @@ should also be implemented in Vue 2. **It is highly recommended that you use the
 what you're doing.**
 
 To register a custom renderer, follow these steps:
-1. Implement your renderer in `vue/src/components/YourCustomRenderer.vue`
-2. Add `export {default as YourCustomRenderer} from "./YourCustomRenderer.vue""` to `/vue/src/components/index.js`
-3. Add `import {entry as YourCustomRenderer} from "./YourCustomRenderer.vue";` to `/vue/src/components/renderer.js`
-4. Add `YourCustomRenderer` to `customRenderers` in `/vue/src/components/renderer.js`.
+1. Implement your renderer in `src/components/YourCustomRenderer.vue`
+2. Add the renderer to the export variables in `src/components/renderer.js`.
 
 The ins and outs of how to implement renderers in JsonForms is beyond the scope of this sample application. For more, visit
 the [JsonForms website](jsonforms.io).
