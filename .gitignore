@@ -51,8 +51,8 @@ venv.bak/
 .DS_Store
 
 # Installed packages
-node_modules/*
-dist/*
+node_modules/
+dist/
 
 # Compiled Files
 staticfiles/

@@ -1,0 +1,41 @@
+{% load sass_tags %}
+{% load static %}
+
+<html>
+  <head>
+    <title>Sample silica-django App - {% block title %}{% endblock %}</title>
+    <link href="{% sass_src 'styles/base.scss' %}" rel="stylesheet">
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          Sample silica-django App
+        </a>
+      </div>
+    </nav>
+    <div class="container" id="main-body-container">
+      {% for message in messages %}
+        <div class="alert {% if message.tags %}{{ message.tags }}{% endif %} alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        {{ message }}
+        </div>
+      {% endfor %}
+      {% block body %}{% endblock %}
+    </div>
+    {% if DEBUG %}
+      {#  Load dev Vue if we are not on a production site #}
+      <script type="text/javascript" src="{% static 'lib/js/vue-dev-2.6.12.js' %}"></script>
+    {% else %}
+      {# Load production Vue for a production site #}
+      <script type="text/javascript" src="{% static 'lib/js/vue-2.6.12.js' %}"></script>
+    {% endif %}
+    <script src="{% static 'lib/js/composition-api-1.4.9.js' %}"></script>
+    <script type='text/javascript' src="{% static 'vue/dist/js/app.js' %}"></script>
+    <script type='text/javascript' src="{% static 'vue/dist/js/chunk-vendors.js' %}"></script>
+    {% block bottom_javascript %}{% endblock %}
+  </body>
+</html>

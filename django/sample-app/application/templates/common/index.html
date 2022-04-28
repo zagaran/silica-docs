@@ -1,0 +1,57 @@
+{% extends "base_templates/base.html" %}
+
+
+{% load sass_tags %}
+{% load silica %}
+
+{% block title %}Home{% endblock %}
+
+{% block head %}
+  <link href="{% sass_src 'styles/pages/index.scss' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Welcome to the silica-django Sample Project.</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="card">
+          <div class="card-header">
+            <h2>Learn More About silica-django</h2>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>
+                <a href="https://github.com/zagaran/silica-django">Django Repo</a>
+              </li>
+              <li>
+                <a href="https://github.com/zagaran/silica-vue">Vue Repo</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <div class="card-header">
+            <h2>See Examples</h2>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>
+                <a href="{% url 'view_applications' %}">View Model Forms Page</a>
+              </li>
+              <li>
+                <a href="{% url 'normal_form' %}">View Non-Model Form Page</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
