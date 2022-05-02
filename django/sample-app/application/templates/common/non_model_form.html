@@ -32,4 +32,12 @@
 
 {% block bottom_javascript %}
   {% load_silica_form form "form" %}
+  <script>
+      window.VueApp = new Vue({
+          el: '#main-body-container',
+          data: function () {
+              return {}
+          },
+      })
+  </script>
 {% endblock %}

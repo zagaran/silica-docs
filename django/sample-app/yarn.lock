@@ -4783,10 +4783,10 @@ signal-exit@^3.0.0, signal-exit@^3.0.2, signal-exit@^3.0.3:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.7.tgz#a9a1767f8af84155114eaabd73f99273c8f59ad9"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
 
-silica-vue@^0.0.15-alpha.5:
-  version "0.0.15-alpha.5"
-  resolved "https://registry.yarnpkg.com/silica-vue/-/silica-vue-0.0.15-alpha.5.tgz#7af435f6f2d0d2e6a4e9eeaa816f1a09566adc28"
-  integrity sha512-F/aGN1dTih1oWV35UJm/GFwLEHFJ9/e/NHLw9y/c9ofVW1U9EpKWwhmj/3kgsarys7xvtfpOSjHglpd35WOxlA==
+silica-vue@^0.0.15-alpha.7:
+  version "0.0.15-alpha.7"
+  resolved "https://registry.yarnpkg.com/silica-vue/-/silica-vue-0.0.15-alpha.7.tgz#973ce1bdab77ea672105fe7c759f0c45c4614110"
+  integrity sha512-wh4J4Y2N6UG4srQniM8KIow9+mvDsmThlWVa4PzbxFzrdpJiJ5AtaeOByejsgEeQWDK56eU2KO3Api4qBMKIdQ==
   dependencies:
     "@jsonforms/core" "^3.0.0-beta.1"
     "@jsonforms/vue2" "^3.0.0-beta.1"

@@ -1,33 +1,29 @@
 {
-  "name": "vue",
+  "name": "sample-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vue-cli-service serve",
+    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
   "dependencies": {
     "@jsonforms/core": "^3.0.0-beta.1",
     "@jsonforms/vue2": "^3.0.0-beta.1",
     "@jsonforms/vue2-vanilla": "^3.0.0-beta.1",
-    "silica-vue": "^0.0.15-alpha.7"
-  },
-  "peerDependencies": {
     "@vue/composition-api": "^1.6.0",
+    "core-js": "^3.8.3",
+    "silica-vue": "^0.0.15-alpha.7",
     "vue": "^2.6.14"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.9",
-    "@babel/preset-env": "^7.16.11",
+    "@babel/core": "^7.12.16",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
-    "core-js": "^3.8.3",
     "vue-template-compiler": "^2.6.14"
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "not dead",
-    "ie >= 11"
+    "not dead"
   ]
 }
