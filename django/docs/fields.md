@@ -4,7 +4,7 @@ For the most part, `silica-django` is intended as a tool to be easily integrated
 there are a few features of [JSONForms](https://jsonforms.io) which we think could provide useful functionality in Django.
 
 
-## SilicaSubFormArrayField ![https://img.shields.io/static/v1?label=status&message=in-progress&color=red]
+## SilicaSubFormArrayField <img src="https://img.shields.io/static/v1?label=status&message=in-progress&color=red"/>
 The `SilicaSubFormArrayField` allows you to embed sub-forms within a single form. This allows you to manage
 multiple items -- for example, a blog post and comments on the blog post -- in a single Django form. For now, only
 Django Model Forms are supported.
