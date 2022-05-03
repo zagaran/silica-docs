@@ -16,7 +16,8 @@ to use Vue components or directives.
 
 ### Python
 1. Run `pip install -r requirements.txt`
-2. Run `python manage.py runserver`
+2. Run `python manage.py migrate`
+3. Run `python manage.py runserver`
 
 ### Vue
 
