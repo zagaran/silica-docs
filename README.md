@@ -6,7 +6,7 @@ For interactive examples of each library in action, you should visit the sample 
 
 ## What is Silica?
 
-Silica is an interface between the excellent open-source library [JsonForms.io](www.jsonforms.io) and various statically
+Silica is an interface between the excellent open-source library [JsonForms.io](https://jsonforms.io) and various statically
 rendered backend technologies. The intention is to help developers write less code when they need to write dynamic forms,
 while leveraging the extraordinary amount of work which has already gone into creating and handling forms.
 
