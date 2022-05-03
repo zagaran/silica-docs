@@ -1,13 +1,16 @@
-# sample-silica-django-app
-Sample Silica-Django app.
+# Django-Vue Sample Project
 
-## About this project
+## Development
+It is recommended to keep a node server running in dev mode while you make changes to your app; this way, any changes you
+make to your Vue code will be displayed in Django on the next page reload, which should prevent a de-sync between your
+code and the behavior you see in local testing. Note that this example assumes you are not committing the compiled
+JS to your repo, and that instead you have `yarn build` as part of your deployment process. If you wish instead to manually
+build and commit your Vue library, you should ensure that you clear the `/static/vue/dist` folder before doing so, as hot-reloading
+can cause a buildup of unused files.
 
-This sample project demonstrates how to use Silica-Django Forms. It is not actually the completely minimal possible 
-setup, because it also demonstrates -- and provides a framework for -- how to build custom renderers that you can use 
-alongside the default Silica-Vue components.
-
-Silica-Vue does require that the Vue Composition API is imported into the browser in addition to Vue 2.
+Do all Vue development in `/src`. If you correctly define components in the library, you will have access to them
+throughout the codebase. Do keep in mind that you will have to create a new Vue component in your browser when you wish
+to use Vue components or directives.
 
 ## Installation
 
@@ -46,13 +49,9 @@ If the folder starts to fill up, simply delete it and re-run either `yarn dev` o
 
 ## Custom Renderers
 
-In order to maximize compatibility, Silica-Vue is implemented in Vue 2. This means that any custom renderers you build
-should also be implemented in Vue 2. **It is highly recommended that you use the existing build setup unless you know exactly
-what you're doing.**
-
 To register a custom renderer, follow these steps:
 1. Implement your renderer in `src/components/YourCustomRenderer.vue`
-2. Add the renderer to the export variables in `src/components/renderer.js`.
+2. Add the renderer to the export variables in `src/components/renderers.js`.
 
-The ins and outs of how to implement renderers in JsonForms is beyond the scope of this sample application. For more, visit
-the [JsonForms website](jsonforms.io).
+The specifics of how to implement renderers in JsonForms is beyond the scope of this sample application. For more, visit
+the [JsonForms website](https://jsonforms.io).
