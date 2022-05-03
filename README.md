@@ -27,3 +27,19 @@ We intend to implement a Vue3 and React version of the framework once the Vue2 i
 ## Roadmap
 Silica is currently in active development; see our GitHub Issues tracker to see what is currently in development.
 Our major priority at the moment is stability, as the library is still in pre-alpha.
+
+### Tags
+Where appropriate, components have been tagged with the following badges.
+
+#### In-Progress ![https://img.shields.io/static/v1?label=status&message=in-progress&color=red]
+Anything tagged `in-progress` is not stable and should not be used for production sites. These components are in
+active development and their API may change. Use at your own risk.
+
+
+#### Stable ![https://img.shields.io/static/v1?label=status&message=in-progress&color=yellow]
+Anything tagged `stable` has a settled API but may not be feature complete. These should generally not be used
+for production sites, although you could safely build in support for them without wasting effort.
+
+#### Completed ![https://img.shields.io/static/v1?label=status&message=stable&color=green]
+Anything tagged `completed` should be considered stable. Its API will not change between minor versions and it is 
+feature complete. You can feel comfortable using these components in production settings.

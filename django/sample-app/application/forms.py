@@ -19,8 +19,6 @@ class ApplicationNoteForm(SilicaFormMixin, ModelForm):
 
 
 class ApplicationNoteArrayField(SilicaSubFormArrayField):
-    # todo support non-model forms
-    # todo make the visuals a lot better
     instance_form = ApplicationNoteForm
 
     def get_queryset(self):
