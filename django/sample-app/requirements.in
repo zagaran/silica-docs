@@ -6,6 +6,7 @@ psycopg2
 silica-django>=0.0.5a
 django-debug-toolbar
 django-sass-processor
+libsass
 ################################
 
 # Convenience
