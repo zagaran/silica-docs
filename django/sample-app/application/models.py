@@ -39,6 +39,17 @@ class Application(TimestampedModel):
     ineligible_reason = models.TextField(blank=True, default="")
     can_appeal = models.BooleanField(default=False)
 
+    mailing_address_1 = models.TextField(blank=True, default="")  # Textfield supported. Charfield supported, too?
+    mailing_address_2 = models.TextField(blank=True, default="")
+    mailing_address_city = models.TextField(blank=True, default="")
+    mailing_address_state = models.TextField(blank=True, default="")
+    mailing_address_zip_code = models.TextField(blank=True, default="")
+    billing_address_1 = models.TextField(blank=True, default="")
+    billing_address_2 = models.TextField(blank=True, default="")
+    billing_address_city = models.TextField(blank=True, default="")
+    billing_address_state = models.TextField(blank=True, default="")
+    billing_address_zip_code = models.TextField(blank=True, default="")
+
 
 class ApplicationNote(TimestampedModel):
     application = models.ForeignKey(Application, related_name="application_notes", on_delete=models.CASCADE)
