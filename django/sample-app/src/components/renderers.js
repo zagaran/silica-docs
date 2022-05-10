@@ -5,5 +5,5 @@ export const customRenderers = [
 ]
 
 export const rendererComponents = [
-    CustomTextRenderer
+    CustomTextRenderer,
 ]

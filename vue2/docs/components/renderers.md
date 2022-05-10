@@ -7,6 +7,13 @@ application in statically rendered contexts. These changes are detailed below in
 
 ## Changes from JSONForms
 
+### New Field: SilicaSubmitControlRenderer
+In order to hook submit buttons into JSONForms' rule system, we have implemented a `SilicaSubmitControlRenderer` component.
+If you set `uischema.options.format = "submit"`, this renderer will be used for string fields. The value of the string
+will be the value of the submit button (allowing for the use case of different buttons needing to perform different actions
+in the same backend process).
+
+
 ### Array Fields
 For now, Silica does not provide out-of-the-box support for moving items up or down in an array field, as there is not yet an interface for
 how these changes would be saved on the database in a way which would ensure visual consistency across reloads.

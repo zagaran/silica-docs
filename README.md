@@ -35,6 +35,11 @@ Where appropriate, components have been tagged with the following badges.
 Anything tagged `in-progress` is not stable and should not be used for production sites. These components are in
 active development and their API may change. Use at your own risk.
 
+#### Stabilizing <img src="https://img.shields.io/static/v1?label=status&message=stabilizing&color=orange"/>
+Anything tagged `stabilizing` is approaching a stable API, but may still undergo changes. The API is mostly solidified, 
+and any outstanding design changes are either minor or described in documentation. The distinction between
+`stablilizing` and `in-progress` is that the upcoming changes to something which is `stabilizing` are known
+and documented, while `in-progress` may change in unforeseen ways.
 
 #### Stable <img src="https://img.shields.io/static/v1?label=status&message=stable&color=yellow"/>
 Anything tagged `stable` has a settled API but may not be feature complete. These should generally not be used

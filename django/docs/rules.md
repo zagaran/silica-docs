@@ -8,11 +8,7 @@ should be the Condition under which it should activate. For example:
 
 ```python
 # assuming fields are is_eligible, override_valid, and show_all_fields
-rules = {
-    'eligibility': ShowIf(Or(is_eligible=True, And(override_valid=True, show_all_fields=True)))
-}
-
-
+SHOW_IF_ELIGIBLE_OR_OVERRIDE = ShowIf(Or(is_eligible=True, And(override_valid=True, show_all_fields=True)))
 ```
 
 ## Effects
@@ -26,3 +22,6 @@ The arguments passed to an Effect must be Conditions; you may also pass kwargs i
 
 To instantiate a Boolean condition, pass the acceptable values for a given field as a kwarg, e.g. `Or(key1=1)`. This value
 can be either a single value, a list of multiple acceptable values, or another Boolean condition.
+
+At this time, only a single constant value or a set of values are supported values for Condition values. In the future,
+we may support more complex validation rules involving comparison (e.g. >=).

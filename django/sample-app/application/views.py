@@ -47,9 +47,19 @@ class ApplicationView(TemplateView):
         if form.is_valid():
             form.save()
         else:
-            messages.error(request, form.errors)
+            if pk:
+                return render(request, self.template_name, context={
+                    'create_form': ApplicationForm(),
+                    'existing_applications_forms': [ApplicationForm(instance=instance) for instance in Application.objects.exclude(pk=pk)] + [form]
+                })
+            else:
+                return render(request, self.template_name, context={
+                    'create_form': form,
+                    'existing_applications_forms': [ApplicationForm(instance=instance) for instance in
+                                                    Application.objects.all()]
+                })
         return redirect('view_applications')
-    
+
     def get_context_data(self, **kwargs):
         return {
             'create_form': ApplicationForm(),

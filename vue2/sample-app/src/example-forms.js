@@ -1349,7 +1349,9 @@ export const formTypes = [
                                 ]
                             }
                         }
-                    }
+                    },
+                    "maxItems": 4,
+                    "minItems": 1,
                 }
             }
         },
@@ -1358,7 +1360,10 @@ export const formTypes = [
             "elements": [
                 {
                     "type": "Control",
-                    "scope": "#/properties/comments"
+                    "scope": "#/properties/comments",
+                    "options": {
+                        "enableAddButton": true
+                    }
                 }
             ]
         },

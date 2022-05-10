@@ -18,48 +18,40 @@ To use the `SilicaFormMixin`, simply include it as a subclass when defining any 
 ```python
 from django.forms import ModelForm
 from silica_django.forms import SilicaModelFormMixin
-from silica_django.layout import VerticalLayout, HorizontalLayout, Control
+from silica_django.layout import VerticalLayout, HorizontalLayout
+from silica_django.rules import ShowIf, Or
+from silica_django.config import SilicaConfig, SilicaFieldConfig
 # other imports
 ...
 
 class SomeForm(SilicaModelFormMixin, ModelForm):
     # define your fields here
+    field3 = models.BooleanField(required=False)
     ...
     class Meta:
         model = SomeModel
         fields = ('field1', 'field2')
-        rules = {
-           # optionally define rules for dynamic field behavior
-            ... 
-        }
-        # optionally define a custom layout for the form
-        layout = VerticalLayout(HorizontalLayout(Control('field1'), Control('field2')))
-        uischema_options = {
-            # optionally define custom options for the uischema to configure individual fields
-            ...
-        }
+        # optionally define a custom layout for the form; if you do, note that all fields on your form must be placed
+        layout = VerticalLayout(HorizontalLayout('field1', 'field2'), 'field3')
+        silica_config = SilicaConfig(
+            # note that you do not need to define all fields here, only fields you want to customize
+            field1=SilicaFieldConfig(rule=ShowIf(Or(field2=["criterion1","criterion2"], field3=True)))
+        )
 ```
 or, for non-Model Forms:
 ```python
 from django.forms import Form
 from silica_django.forms import SilicaFormMixin
 from silica_django.layout import VerticalLayout
+from silica_django.config import SilicaConfig
 # other imports
 ...
 class SomeStandardForm(SilicaFormMixin, Form):
     # define fields
     ...
     class Meta:
-        rules = {
-           # optionally define rules for dynamic field behavior
-            ... 
-        }
-        # optionally define a custom layout for the form
+        silica_config = SilicaConfig(...)
         layout = VerticalLayout(...)
-        uischema_options = {
-            # optionally define custom options for the uischema to configure individual fields
-            ...
-        }
 ```
 
 ### Configuration

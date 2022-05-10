@@ -16,3 +16,4 @@ a submit button and form with action and method, as well as a `csrftoken` input.
 - `dataProp` - the value to use for the form's data.
 - `schemaProp` - the value to use for the form's schema.
 - `uischemaProp` - the value to use for the form's uischema.
+- `addSubmitButton` - defaults to true; if false, no submit button will be added to the form

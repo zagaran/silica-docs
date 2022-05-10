@@ -32,10 +32,9 @@
               <silica-django-form
                   v-show="showSilicaForm"
                   id="test-form"
-                  :dataProp="formData"
-                  :schemaProp="schema"
-                  :uischemaProp="uischema"
-                  :onChange="onChange"
+                  :data="formData"
+                  :schema="schema"
+                  :uischema="uischema"
                   :styles="styles"
                   :custom-renderers="customRenderers"
               />
@@ -100,7 +99,6 @@ import {formTypes} from "./example-forms";
 import {customRenderers} from "@/components/renderers";
 import {CustomTextRenderer} from "@/components/index";
 import JsonViewer from 'vue-json-viewer';
-
 const styles = bootstrap4Styles;
 
 const renderers = [
@@ -125,7 +123,7 @@ export default defineComponent({
       uischema: formTypes[0].uischema,
       styles,
       formTypes,
-      selectedFormType: formTypes[0]
+      selectedFormType: formTypes[0],
     };
   },
   methods: {

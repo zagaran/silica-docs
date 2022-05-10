@@ -20,6 +20,7 @@
               id="create-form"
               ref="create-form"
               :csrf-token="'{{ csrf_token }}'"
+              :add-submit-button="false"
               action="{% url 'create_application' %}"
               method="POST"
           >
@@ -40,6 +41,7 @@
                 id="edit-form-{{ existing_application_form.instance.id }}"
                 ref="edit-form-{{ existing_application_form.instance.id }}"
                 :csrf-token="'{{ csrf_token }}'"
+                :add-submit-button="false"
                 action="{% url 'update_application' existing_application_form.instance.id %}"
                 method="POST"
             >
