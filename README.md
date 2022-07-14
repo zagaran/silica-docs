@@ -16,11 +16,13 @@ rendered web frameworks (e.g. Django).
 
 ## Supported Frameworks
 
-### Backend
-Currently, there is only a Django implementation of the Silica framework. See technical details [here](/django/readme.md) and the sample project [here](/django/sample-app).
+### [Django](/django/) (Backend)
+* [Documentation](/django/readme.md)
+* [Sample project](/django/sample-app).
 
-### Frontend
-Currently, there is only a Vue2 implementation of the Silica framework. See technical details [here](/vue2/readme.md) and the sample project [here](/vue2/sample-app).
+### [Vue2](/vue2) (Frontend)
+* [Documentation](/vue2/readme.md)
+* [Sample project](/vue2/sample-app).
 
 We intend to implement a Vue3 and React version of the framework once the Vue2 implementation is in a stable state.
 
