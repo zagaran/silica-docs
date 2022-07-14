@@ -22,7 +22,7 @@ rendered web frameworks (e.g. Django).
 
 ### [Vue2](/vue2) (Frontend)
 * [Documentation](/vue2/readme.md)
-* [Sample project](/vue2/sample-app).
+* [Sample project](/vue2/sample-app)
 
 We intend to implement a Vue3 and React version of the framework once the Vue2 implementation is in a stable state.
 
