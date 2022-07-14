@@ -18,7 +18,7 @@ rendered web frameworks (e.g. Django).
 
 ### [Django](/django/) (Backend)
 * [Documentation](/django/readme.md)
-* [Sample project](/django/sample-app).
+* [Sample project](/django/sample-app)
 
 ### [Vue2](/vue2) (Frontend)
 * [Documentation](/vue2/readme.md)
