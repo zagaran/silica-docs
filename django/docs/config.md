@@ -108,12 +108,12 @@ Supported configuration options for a `SilicaFieldConfig`'s display (the `uische
 #### Overriding CSS
 Silica allows you to customize the classes which will be applied to an individual element using the `css_classes` and `wrapper_css_classes` kwargs.
 
-| UI Element          | `css_classes`                                                                                                                                                             |
-|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Radio Select        | `{"wrapper": "CLASS", "radio": "CLASS", "input": "CLASS"}`                                                                                                                |
-| Select              | `{"select": "CLASS", "option": "CLASS"}`                                                                                                                                  |
-| Array               | `{"root": "CLASS", "legend": "CLASS", "label": "CLASS", "addButton": "CLASS", "itemWrapper": "CLASS", "listElement": "CLASS", "itemContent": "CLASS", "noData": "CLASS"}` |
-| All Other Renderers | `"CLASS"`                                                                                                                                                                 |
+| UI Element          | `css_classes`                                                                                                                                                                                                                                                                                                                                   |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Radio Select        | `{"wrapper": "CLASS", "radio": "CLASS", "input": "CLASS"}`                                                                                                                                                                                                                                                                                      |
+| Select              | `{"select": "CLASS", "option": "CLASS"}`                                                                                                                                                                                                                                                                                                        |
+| Array               | `{"root": "CLASS", "legend": "CLASS", "label": "CLASS", "addButton": "CLASS", "itemWrapper": "CLASS", "listElement": {"arrayList": {"item": "CLASS", "itemLabel": "CLASS", "itemMoveUp": "CLASS", "itemMoveDown": "CLASS", "itemDelete": "CLASS", "itemContent": "CLASS", "itemToolbar": "CLASS"}}, "itemContent": "CLASS", "noData": "CLASS"}` |
+| All Other Renderers | `"CLASS"`                                                                                                                                                                                                                                                                                                                                       |
 
 `wrapper_css_classes` should be a dictionary with the following form:
 ```python
