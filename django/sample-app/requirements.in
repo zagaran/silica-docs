@@ -3,10 +3,13 @@ django-environ
 django-extensions
 requests
 psycopg2
-silica-django>=0.1.0a1
+silica-django
 django-debug-toolbar
+django-compressor
 django-sass-processor
 libsass
+django-crispy-forms
+crispy-bootstrap5
 ################################
 
 # Convenience

@@ -1,0 +1,35 @@
+{% extends "base_templates/base.html" %}
+{% load silica %}
+{% load static %}
+
+{% block title %}Silica Test Form{% endblock %}
+{% block page_css %}
+  <link href="{% static 'lib/styles/jsonforms-vue-vanilla.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body_tag %}
+  <body class="scenic_background">
+{% endblock %}
+{% block body %}
+  <div class="row">
+    <h1>This is just a form!</h1>
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
+      <div class="panel">
+        <div class="panel-body">
+          <silica-django-form
+              id="form"
+              ref="form"
+              :csrf-token="'{{ csrf_token }}'"
+              action="{% url 'normal_form' %}"
+              method="POST"
+          >
+          </silica-django-form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block bottom_javascript %}
+  {% load_silica_form form "form" %}
+{% endblock %}

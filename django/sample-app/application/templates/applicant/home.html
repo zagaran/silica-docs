@@ -1,0 +1,17 @@
+{% extends 'base_templates/base.html' %}
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Signed in as {{ user }}</h1>
+        <h2>Important Applications</h2>
+        <a href="{% url 'new_application' %}">Create New Application</a>
+        <ul>
+          {% for application in applications %}
+            <li>Application {{ forloop.counter }}: {{ application.status }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

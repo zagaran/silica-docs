@@ -1,9 +1,12 @@
 const { defineConfig } = require('@vue/cli-service');
 const path = require("path");
+
+const DEST_PATH = '/static/js/dist/vue/';
+
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: '/static/vue/dist/', // Should be STATIC_URL + path/to/build
-    outputDir: path.resolve(__dirname, './static/vue/dist/'), // Output to a directory in STATICFILES_DIRS
+  publicPath: DEST_PATH, // Should be STATIC_URL + path/to/build
+    outputDir: path.resolve(__dirname, '.' + DEST_PATH), // Output to a directory in STATICFILES_DIRS
     filenameHashing: false, // Django will hash file names, not webpack
     runtimeCompiler: true, // See: https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only
     devServer: {
@@ -13,8 +16,7 @@ module.exports = defineConfig({
     },
   configureWebpack: {
     externals: {
-      vue: 'Vue',
-      '@vue/composition-api': 'VueCompositionAPI',
+      vue: 'Vue'
     },
   }
 })

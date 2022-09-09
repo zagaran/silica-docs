@@ -52,9 +52,12 @@ THIRD_PARTY_APPS = [
     "debug_toolbar",
     "sass_processor",
     "silica_django",
+    "crispy_forms",
+    "crispy_bootstrap5",
 ]
 
 LOCAL_APPS = [
+    "common",
     "application",
 ]
 
@@ -92,7 +95,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "application.context_processors.constants",
+                "common.context_processors.constants",
             ],
         },
     },
@@ -197,7 +200,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-AUTH_USER_MODEL = "application.User"
+AUTH_USER_MODEL = "common.User"
 
 # Bootstrap styling for Django messages
 MESSAGE_TAGS = {

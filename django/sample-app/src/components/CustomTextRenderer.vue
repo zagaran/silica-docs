@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { customSilicaRendererTester, SilicaControlWrapper as ControlWrapper, silicaDefaultControlProps } from "silica-vue";
+import { rankCustomSilicaComponent, SilicaControlWrapper as ControlWrapper, silicaDefaultControlProps } from "silica-vue";
 import { defineComponent } from "@vue/composition-api";
 import { useJsonFormsControl } from "@jsonforms/vue2";
 import { useVanillaControl } from "@jsonforms/vue2-vanilla";
@@ -43,6 +43,6 @@ const controlRenderer = defineComponent({
 export default controlRenderer;
 export const entry = {
   renderer: controlRenderer,
-  tester: customSilicaRendererTester("CustomTextRenderer")
+  tester: rankCustomSilicaComponent("CustomTextRenderer")
 };
 </script>

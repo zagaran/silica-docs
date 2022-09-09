@@ -1,0 +1,61 @@
+{% extends "base_templates/base.html" %}
+{% load silica %}
+{% load static %}
+
+{% block title %}Silica Test Model Form{% endblock %}
+{% block page_css %}
+  <link href="{% static 'lib/styles/jsonforms-vue-vanilla.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body_tag %}
+  <body class="scenic_background">
+{% endblock %}
+{% block body %}
+  <div class="row">
+    <h1>Create New Application</h1>
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
+      <div class="panel">
+        <div class="panel-body">
+          <silica-django-form
+              id="create-form"
+              ref="create-form"
+              :csrf-token="'{{ csrf_token }}'"
+              action="{% url 'create_application' %}"
+              method="POST"
+          >
+          </silica-django-form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <hr>
+    <h1>Existing Applications</h1>
+    {% for existing_application_form in existing_applications_forms %}
+      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
+        <div class="panel">
+          <div class="panel-body">
+            {{ existing_application_form.errors }}
+            <silica-django-form
+                id="edit-form-{{ existing_application_form.instance.id }}"
+                ref="create-form-{{ existing_application_form.instance.id }}"
+                :csrf-token="'{{ csrf_token }}'"
+                action="{% url 'update_application' existing_application_form.instance.id %}"
+                method="POST"
+            >
+            </silica-django-form>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
+
+{% block bottom_javascript %}
+  {% load_silica_form create_form "create-form" %}
+  {% for existing_app in existing_applications_forms %}
+    {% with app_id=existing_app.instance.id|stringformat:"s" %}
+      {% load_silica_form existing_app "edit-form-"|add:app_id %}
+    {% endwith %}
+  {% endfor %}
+{% endblock %}
