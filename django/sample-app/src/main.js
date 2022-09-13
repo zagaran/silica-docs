@@ -3,13 +3,12 @@ import "regenerator-runtime/runtime";
 // https://dev.to/siegerts/consolidating-components-into-a-vue-js-plugin-ndc
 import * as components from "./components";
 import SilicaVue, {bootstrap3Styles} from "silica-vue";
-import CompositionApi from "@vue/composition-api";
-// you must install CompositionAPI before installing SilicaVue
-Vue.use(CompositionApi);
-Vue.use(SilicaVue);
+
+Vue.use(SilicaVue)
 
 const SiteLib = {
     install(Vue, options = {}) {
+        // you must install CompositionAPI before installing SilicaVue
         for (const componentName in components) {
             const component = components[componentName]
             Vue.component(componentName, component)

@@ -1,6 +1,18 @@
 {% extends 'base_templates/base.html' %}
 {% load crispy_forms_tags %}
+{% load silica %}
 {% block body %}
   {{ application.id }}
-  {{ form|crispy }}
+  <silica-django-form id="application" />
+{% endblock %}
+{% block bottom_javascript %}
+  {% load_silica_form form "application" %}
+    <script>
+    new Vue({
+        el: '#main-body-container',
+        data: function () {
+            return {}
+        }
+    })
+  </script>
 {% endblock %}

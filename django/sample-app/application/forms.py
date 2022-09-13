@@ -1,4 +1,6 @@
 from django import forms
+from silica_django.forms import SilicaFormMixin
+from silica_django.fields import SilicaSubFormField
 
 from application.models import Application, ApplicationItemOne, ApplicantInformation, ApplicationItemTwo
 from common.models import Organization
@@ -10,15 +12,20 @@ class CreateApplicationForm(forms.Form):
     organization = forms.ModelChoiceField(Organization.objects.all())
 
 
-class ApplicantInfoForm(forms.ModelForm):
+class ApplicantInfoForm(SilicaFormMixin, forms.ModelForm):
     class Meta:
         model = ApplicantInformation
         fields = '__all__'
 
 
-class ApplicationForm(forms.ModelForm):
+class SilicaApplicantInfoField(SilicaSubFormField):
+    instance_form = ApplicantInfoForm
+
+
+class ApplicationForm(SilicaFormMixin, forms.ModelForm):
     has_item_one = False
     has_item_two = False
+    applicant = SilicaApplicantInfoField()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

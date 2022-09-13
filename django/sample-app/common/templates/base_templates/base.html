@@ -35,30 +35,13 @@
     </div>
     {% if DEBUG %}
       {#  Load dev Vue if we are not on a production site #}
-      <script type="text/javascript" src="{% static 'lib/js/vue-dev-2.6.12.js' %}"></script>
+      <script type="text/javascript" src="{% static 'lib/js/vue-dev-2.7.10.js' %}"></script>
     {% else %}
       {# Load production Vue for a production site #}
-      <script type="text/javascript" src="{% static 'lib/js/vue-2.6.12.js' %}"></script>
+      <script type="text/javascript" src="{% static 'lib/js/vue-2.7.10.js' %}"></script>
     {% endif %}
-    <script src="{% static 'lib/js/composition-api-1.4.9.js' %}"></script>
-    <script src="{% static 'js/dist/vue/js/chunk-vendors.js' %}"></script>
     <script src="{% static 'js/dist/vue/js/app.js' %}"></script>
-{#    <script>#}
-        {#window.SilicaVueStyles = window.SilicaVue.bootstrap4Styles;#}
-        {#window.SilicaCustomRenderers = window.SampleLib.customRenderers;#}
-{#    </script>#}
+    <script src="{% static 'js/dist/vue/js/chunk-vendors.js' %}"></script>
     {% block bottom_javascript %}{% endblock %}
-{#    <script>#}
-{#      window.VueApp = new Vue({#}
-{#        el: '#main-body-container',#}
-{#        data: function() {#}
-{#            return {#}
-{#                ...window.VueData,#}
-{#            } || {}#}
-{#        },#}
-{#        methods: window.VueMethods || {},#}
-{#        ...window.VueKwargs#}
-{#      });#}
-{#    </script>#}
   </body>
 </html>
