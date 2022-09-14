@@ -25,7 +25,7 @@ class SilicaApplicantInfoField(SilicaSubFormField):
 class ApplicationForm(SilicaFormMixin, forms.ModelForm):
     has_item_one = False
     has_item_two = False
-    applicant = SilicaApplicantInfoField()
+    applicant = SilicaApplicantInfoField(label="Applicant Info")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

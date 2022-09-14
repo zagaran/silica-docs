@@ -59,3 +59,5 @@ staticfiles/
 staticfiles/*
 /static/styles/**/*.css
 /static/styles/**/*.map
+
+*.lock

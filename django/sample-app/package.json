@@ -5,15 +5,16 @@
   "scripts": {
     "dev": "concurrently --kill-others \"yarn dev:vue\" \"yarn dev:static\"",
     "dev:vue": "vue-cli-service serve",
-    "dev:static": "WEBPACK_ENV=dev webpack",
+    "dev:static": "./node_modules/.bin/webpack serve --env development",
     "build": "yarn build:vue && yarn build:static",
     "build:vue": "vue-cli-service build",
-    "build:static": "WEBPACK_ENV=build webpack"
+    "build:static": "./node_modules/.bin/webpack --env production"
   },
   "dependencies": {
     "bootstrap": "^5.1.1",
     "silica-vue": "^0.1.0-alpha.9",
-    "vue-fragment": "^1.5.2"
+    "vue-fragment": "^1.5.2",
+    "webpack-dev-server": "^4.11.0"
   },
   "peerDependencies": {
     "vue": "^2.7.10"
