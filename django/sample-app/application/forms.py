@@ -21,6 +21,9 @@ class ApplicantInfoForm(SilicaFormMixin, forms.ModelForm):
 class SilicaApplicantInfoField(SilicaSubFormField):
     instance_form = ApplicantInfoForm
 
+    def get_instance(self):
+        return ApplicantInformation.objects.get(application=self.parent_instance)
+
 
 class ApplicationForm(SilicaFormMixin, forms.ModelForm):
     has_item_one = False

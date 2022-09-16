@@ -1,18 +1,15 @@
 {% extends 'base_templates/base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 {% load silica %}
 {% block body %}
-  {{ application.id }}
-  <silica-django-form id="application" />
+  <silica-django-form 
+      id="application" 
+      method="post" 
+      action="{% url 'view_application' application.id %}"
+  ></silica-django-form>
 {% endblock %}
 {% block bottom_javascript %}
   {% load_silica_form form "application" %}
-    <script>
-    new Vue({
-        el: '#main-body-container',
-        data: function () {
-            return {}
-        }
-    })
-  </script>
+  <script type="module" src="{% static 'js/dist/applications.js' %}"></script>
 {% endblock %}

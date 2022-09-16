@@ -61,12 +61,14 @@ class ApplicationView(TemplateView, UserHasPermissionMixin):
             'form': ApplicationForm(instance=application),
         }
 
-    def post(self, request):
-        pk = self.kwargs.get('pk', None)
-        application = get_object_or_404(Application, id=id, user=self.request.user)
+    def post(self, request, *args, pk=None, **kwargs):
+        application = get_object_or_404(Application, id=pk, user=self.request.user)
         form = ApplicationForm(request.POST, instance=application)
         if form.is_valid():
             form.save()
+        else:
+            for key, val in form.errors.items():
+                messages.error(request, f"{key}: {val}", extra_tags="danger")
         return redirect('view_application', pk)
 
 

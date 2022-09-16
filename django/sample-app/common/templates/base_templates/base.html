@@ -40,8 +40,7 @@
       {# Load production Vue for a production site #}
       <script type="text/javascript" src="{% static 'lib/js/vue-2.7.10.js' %}"></script>
     {% endif %}
-    <script src="{% static 'js/dist/vue/js/app.js' %}"></script>
-    <script src="{% static 'js/dist/vue/js/chunk-vendors.js' %}"></script>
+    <script type="module" src="{% static 'js/dist/vue/main.js' %}"></script>
     {% block bottom_javascript %}{% endblock %}
   </body>
 </html>
