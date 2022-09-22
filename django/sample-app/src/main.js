@@ -1,6 +1,6 @@
 // https://dev.to/siegerts/consolidating-components-into-a-vue-js-plugin-ndc
 import * as components from "./components";
-import SilicaVue, {bootstrap3Styles} from "silica-vue";
+import SilicaVue, {bootstrap4Styles} from "silica-vue";
 
 const SiteLib = {
     install(Vue, options = {}) {
@@ -13,7 +13,7 @@ const SiteLib = {
     }
 }
 if (typeof window !== 'undefined' && window.Vue) {
-    const ourStyles = {...bootstrap3Styles}
+    const ourStyles = {...bootstrap4Styles}
     window.SilicaVueStyles = ourStyles
     window.Vue.use(SiteLib)
 }
