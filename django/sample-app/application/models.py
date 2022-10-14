@@ -14,14 +14,14 @@ class ApplicationCore(TimestampedModel):
 
 
 class ApplicantInformation(TimestampedModel):
-    name = models.TextField()
-    dob = models.DateField()
-    address_line_one = models.TextField()
+    name = models.TextField(null=True)
+    dob = models.DateField(null=True)
+    address_line_one = models.TextField(null=True)
     address_line_two = models.TextField(blank=True, null=True)
-    city = models.TextField()
-    zip_code = models.IntegerField()
+    city = models.TextField(null=True)
+    zip_code = models.IntegerField(null=True)
     state = models.CharField(max_length=2)
-    phone_number = models.IntegerField()
+    phone_number = models.IntegerField(null=True, blank=True)
 
 
 class ApplicationItemCore(TimestampedModel):

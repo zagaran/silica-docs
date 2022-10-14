@@ -6,8 +6,8 @@ from django.views.generic.base import TemplateView, View
 from django.http.response import HttpResponse
 
 from application.constants import Permissions
-from application.forms import CreateApplicationForm, ApplicationForm
-from application.models import Application, ApplicationItemOne, ApplicationItemTwo
+from application.forms import CreateApplicationForm, ApplicationForm, ApplicantInfoForm
+from application.models import Application, ApplicationItemOne, ApplicationItemTwo, ApplicantInformation
 from common.authentication import UserHasPermissionMixin
 
 
@@ -15,7 +15,7 @@ class IndexView(TemplateView):
     template_name = "common/index.html"
 
 
-class ApplicantHomeView(TemplateView, UserHasPermissionMixin):
+class ApplicantHomeView(UserHasPermissionMixin, TemplateView):
     template_name = "applicant/home.html"
     permission = Permissions.edit_own_application
 
@@ -56,9 +56,12 @@ class ApplicationView(TemplateView, UserHasPermissionMixin):
     def get_context_data(self, **kwargs):
         pk = self.kwargs.get('pk', None)
         application = get_object_or_404(Application, id=pk, user=self.request.user)
+        if not application.applicant:
+            application.applicant = ApplicantInformation.objects.create()
+            application.save()
         return {
             'application': application,
-            'form': ApplicationForm(instance=application),
+            'form': ApplicantInfoForm(instance=application.applicant),
         }
 
     def post(self, request, *args, pk=None, **kwargs):
@@ -99,25 +102,27 @@ class LoginView(TemplateView):
             'login_form': AuthenticationForm()
         }
 
+    def get(self, request, *args, **kwargs):
+        request.session['login_next'] = request.GET.get('next')
+        return super().get(request, *args, **kwargs)
+
     def post(self, request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                messages.info(request, f"You are now logged in as {username}.")
-                if (user.has_permission(Permissions.edit_own_application)):
-                    return redirect('applicant_home')
-                return redirect('index')
-            else:
-                messages.error(request, "Invalid username or password.")
+            login(request, form.user_cache)
+            messages.info(request, "You have successfully logged in.")
+            if request.session['login_next']:
+                next_page = request.session['login_next']
+                request.session['login_next'] = None
+                return redirect(to=next_page)
+            if form.user_cache.has_permission(Permissions.edit_own_application):
+                return redirect('applicant_home')
+            return redirect('index')
         return render(request, template_name=self.template_name, context={'login_form': form})
 
 
 class LogoutView(View):
-    def post(self, request):
+    def get(self, request):
         logout(request)
         return redirect("index")
 

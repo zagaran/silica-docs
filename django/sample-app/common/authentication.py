@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import AccessMixin
+from django.contrib.auth.mixins import AccessMixin, LoginRequiredMixin
 from django.core.exceptions import ImproperlyConfigured
 
 

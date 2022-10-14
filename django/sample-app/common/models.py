@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 from application.constants import UserRole, USER_ROLE_TO_PERMISSIONS
-
+from common.managers import CustomUserManager
 
 class TimestampedModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -35,12 +35,30 @@ class Organization(TimestampedModel):
 
 # Create your models here.
 class User(AbstractUser, TimestampedModel):
+
+    objects = CustomUserManager()
+
     email = models.EmailField(unique=True)
-    organization = models.ForeignKey(Organization, related_name="users", on_delete=models.PROTECT)
-    user_role = models.TextField(choices=UserRole.choices, default=UserRole.applicant)
+    organization = models.ForeignKey(Organization, related_name="users", on_delete=models.PROTECT, null=True)
+    user_role = models.TextField(choices=UserRole.choices)
+    username = None  # disable the AbstractUser.username field
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
 
     def has_permission(self, permission):
         return permission in USER_ROLE_TO_PERMISSIONS[self.user_role]
+
+    @property
+    def is_superuser(self):
+        return self.user_role == UserRole.admin.value
+
+    @property
+    def is_admin(self):
+        return self.user_role == UserRole.admin.value
+
+    @property
+    def is_staff(self):
+        return self.user_role == UserRole.staff.value
 
     def __str__(self):
         return self.email

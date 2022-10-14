@@ -13,7 +13,8 @@
   "dependencies": {
     "bootstrap": "^5.2.1",
     "silica-vue": "^0.1.0-alpha.9",
-    "vue-fragment": "^1.5.2"
+    "vue-fragment": "^1.5.2",
+    "vue-tabs-component": "^1.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",

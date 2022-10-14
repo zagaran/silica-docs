@@ -201,6 +201,7 @@ STATICFILES_DIRS = [
 ]
 
 AUTH_USER_MODEL = "common.User"
+LOGIN_URL = '/login'
 
 # Bootstrap styling for Django messages
 MESSAGE_TAGS = {

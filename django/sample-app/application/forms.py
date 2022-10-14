@@ -2,8 +2,7 @@ from django import forms
 from silica_django.config import SilicaConfig, SilicaFieldConfig
 from silica_django.forms import SilicaFormMixin
 from silica_django.fields import SilicaSubFormField, SilicaSubFormArrayField
-from silica_django.layout import VerticalLayout, Categorization, Category, CustomHTMLElement, HorizontalLayout
-from silica_django.rules import ShowIf
+from silica_django.layout import VerticalLayout, Categorization, Category, CustomHTMLElement, HorizontalLayout, Group
 
 from application.models import Application, ApplicationItemOne, ApplicantInformation, ApplicationItemTwo
 from common.models import Organization
@@ -55,30 +54,15 @@ class SilicaItemOneField(SilicaSubFormField):
 
 class ApplicationForm(SilicaFormMixin, forms.ModelForm):
     applicant = SilicaApplicantInfoField(label="Applicant Info")
-    item_one = SilicaItemOneField(label="Fill out Item One")
-    include_item_one = forms.BooleanField(initial=True, required=False)
-    include_item_two = forms.BooleanField(initial=False, required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
     class Meta:
         model = Application
-        fields = ('applicant', 'item_one', 'include_item_one', 'include_item_two')
-        silica_config = SilicaConfig(
-            # TODO: rules aren't working currently
-            item_one=SilicaFieldConfig(rule=ShowIf(include_item_one=True))
-        )
+        fields = ('applicant',)
         layout = VerticalLayout(
-            HorizontalLayout(
-                'include_item_one', 'include_item_two',
-            ),
-            CustomHTMLElement("<h1>test</h1>", rule=ShowIf(include_item_one=True)),
-            Categorization(
-                Category("General Info", 'applicant'),
-                Category("Item One", 'item_one'),
-                Category("Item Two", CustomHTMLElement("<h1>Element Two</h1>"), rule=ShowIf(include_item_two=True)),
-            )
+            Group("General Info", 'applicant',)
         )
 
 
