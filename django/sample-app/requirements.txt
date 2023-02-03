@@ -24,7 +24,7 @@ cryptography==3.3.2
     # via -r requirements.in
 decorator==5.1.1
     # via ipython
-django==3.2.13
+django==3.2.17
     # via
     #   -r requirements.in
     #   django-debug-toolbar
