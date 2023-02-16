@@ -48,6 +48,8 @@ jedi==0.18.1
     # via ipython
 libsass==0.21.0
     # via -r requirements.in
+markupsafe==2.1.2
+    # via werkzeug
 matplotlib-inline==0.1.3
     # via ipython
 parso==0.8.3
@@ -98,7 +100,7 @@ urllib3==1.26.9
     # via requests
 wcwidth==0.2.5
     # via prompt-toolkit
-werkzeug==2.1.2
+werkzeug==2.2.3
     # via -r requirements.in
 wheel==0.37.1
     # via pip-tools
