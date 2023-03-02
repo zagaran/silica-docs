@@ -2529,9 +2529,9 @@ dns-equal@^1.0.0:
   integrity sha1-s55/HabrCnW6nBcySzR1PEfgZU0=
 
 dns-packet@^5.2.2:
-  version "5.3.1"
-  resolved "https://registry.npmjs.org/dns-packet/-/dns-packet-5.3.1.tgz"
-  integrity sha512-spBwIj0TK0Ey3666GwIdWVfUpLyubpU53BTCu8iPn4r4oXd9O14Hjg3EHw3ts2oed77/SeckunUYCyRlSngqHw==
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/dns-packet/-/dns-packet-5.4.0.tgz#1f88477cf9f27e78a213fb6d118ae38e759a879b"
+  integrity sha512-EgqGeaBB8hLiHLZtp/IbaDQTL8pZ0+IvwzSHA6d7VyMDM+B9hgddEMa9xjK5oYnw0ci0JQ6g2XCD7/f6cafU6g==
   dependencies:
     "@leichtgewicht/ip-codec" "^2.0.1"
 
@@ -4819,14 +4819,15 @@ signal-exit@^3.0.0, signal-exit@^3.0.2, signal-exit@^3.0.3:
   resolved "https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.7.tgz"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
 
-silica-vue@^0.0.15-alpha.13:
-  version "0.0.15-alpha.13"
-  resolved "https://registry.yarnpkg.com/silica-vue/-/silica-vue-0.0.15-alpha.13.tgz#45b58709c5cd3746bea8178759a828b27b49b2e3"
-  integrity sha512-7gpD+tihULuqQTVbHS0HTYWr6jQOHsnrbxOBStaBw7ex26CmV8W2X2aE7xawu10nLnKBcWXoIpP8XTI7kXREZg==
+silica-vue@^0.0.15-alpha.15:
+  version "0.0.15-alpha.20"
+  resolved "https://registry.yarnpkg.com/silica-vue/-/silica-vue-0.0.15-alpha.20.tgz#807ecea086ae903a4e2a437ad0a8a842d7f94690"
+  integrity sha512-BpkHodYpRCEp1FK/hkZtCHQt+jUeIIEv2lslC5cUpuh2PoI1L2ZqpzHtWLrl30xCH4KkfxTQVU9rkmOuFMdYtA==
   dependencies:
     "@jsonforms/core" "^3.0.0-beta.1"
     "@jsonforms/vue2" "^3.0.0-beta.1"
     "@jsonforms/vue2-vanilla" "^3.0.0-beta.1"
+    ajv "^8.11.0"
     ajv-errors "^3.0.0"
     lodash "^4.17.21"
 
